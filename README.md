@@ -36,16 +36,19 @@ docker compose up -d
 # 1. Initialize working directory
 terraform init
 
-# 2. Validate syntax
+# 2. Format the configuration files
+terraform fmt
+
+# 3. Validate syntax
 terraform validate
 
-# 3. Create execution plan
+# 4. Create execution plan
 terraform plan
 
-# 4. Apply configurations
+# 5. Apply configurations
 terraform apply
 
-# 5. Check the outputs available
+# 6. Check the outputs available
 terraform output
 ```
 

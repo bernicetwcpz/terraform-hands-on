@@ -7,7 +7,7 @@ terraform {
       s3       = "http://localhost:4566"
       dynamodb = "http://localhost:4566"
     }
-    use_lockfile              = true
+    use_lockfile                = true
     access_key                  = "test"
     secret_key                  = "test"
     skip_credentials_validation = true
