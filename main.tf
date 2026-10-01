@@ -22,15 +22,3 @@ resource "aws_ssm_parameter" "environment" {
   type  = "String"
   value = "local"
 }
-
-import {
-    to = aws_s3_bucket.state
-    id = "tfstate"
-}
-
-import {
-  to = aws_dynamodb_table.locktable
-  identity = {
-    name = "tflock"
-  }
-}
