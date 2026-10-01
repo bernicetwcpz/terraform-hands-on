@@ -14,3 +14,9 @@ variable "environment" {
     error_message = "environment must be one of: local,dev, staging, prod."
   }
 }
+
+variable "create_s3_bucket" {
+  type        = bool
+  default     = false
+  description = "Feature flag: Create S3 bucket when set to true"
+}

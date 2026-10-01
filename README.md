@@ -44,30 +44,53 @@ terraform validate
 
 # 4. Create execution plan
 terraform plan
+```
+2. Now create a `terraform.tfvars` file and run `terraform fmt`
+```shell
+prefix           = "floci"
+environment      = "local"
+create_s3_bucket = false
+```
 
-# 5. Apply configurations
-terraform apply
+3. Create a execution plan
+```shell
+# 1. Create execution plan
+terraform plan
+```
 
-# 6. Check the outputs available
+4. Check that the resources are reflecting the intended values as defined in the terraform.tfvars
+
+5. Activity 1: What is the options required to take in the variable file?
+```shell
+terraform plan -help
+```
+6. Apply configurations 
+
+```shell
+terraform apply <include variable file>
+```
+
+7. Check the outputs available
+```shell
 terraform output
 ```
 
-5. Verify a resource through the AWS CLI
+8. Verify a resource through the AWS CLI
 
 ```shell
 aws --endpoint-url http://localhost:4566 \
   s3api head-bucket --bucket floci-terraform-example
 ```
 
-6. Additional Activity: Try importing the resources that have been created imperatively via `setup.sh`
+9. **Activity 2**: Try importing the resources that have been created imperatively via `setup.sh`
 - s3 bucket: tfstate
 - dynamodb: tflock
 
-7. Stuck on how to import the resources? Refer to the following official documentation
+10. Stuck on how to import the resources? Refer to the following official documentation
 - **S3 bucket**: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket#import
 - **DynamoDB**: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/dynamodb_table#import
 
-8. Stuck on how to generate the configurations? Ensure you have defined the import block for the resource above first and run the following command
+11. Stuck on how to generate the configurations? Ensure you have defined the import block for the resource above first and run the following command
 
 ```shell
 terraform plan -generate-config-out=generated_resources.tf

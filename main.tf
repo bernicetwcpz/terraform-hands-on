@@ -1,13 +1,22 @@
+data "aws_caller_identity" "current" {}
+
+locals {
+  standard_naming_prefix = "${var.prefix}-terraform"
+}
+
+
 resource "aws_s3_bucket" "app" {
-  bucket = "${var.prefix}-terraform-example"
+  count  = var.create_s3_bucket ? 1 : 0
+  bucket = "${local.standard_naming_prefix}-example"
+
 }
 
 resource "aws_sqs_queue" "jobs" {
-  name = "${var.prefix}-terraform-jobs"
+  name = "${local.standard_naming_prefix}-jobs"
 }
 
 resource "aws_dynamodb_table" "items" {
-  name         = "${var.prefix}-terraform-items"
+  name         = "${local.standard_naming_prefix}-items"
   billing_mode = "PAY_PER_REQUEST"
   hash_key     = "id"
 
