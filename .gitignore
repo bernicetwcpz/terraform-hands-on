@@ -1,3 +1,6 @@
+
+generated_resources.tf
+
 # Local .terraform directories
 .terraform/
 
